@@ -1,7 +1,4 @@
-# Fórum Simples (PHP + JavaScript + MySQL)
-
-Um starter kit minimalista para um fórum com cadastro/login, postagens, comentários e curtidas.
-
+# Fórum
 ## Como rodar
 
 1. **Crie o banco e as tabelas**:
