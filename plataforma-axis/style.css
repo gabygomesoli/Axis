@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #004681;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.separator:not(:empty)::before {
+  margin-right: 10px;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 10px;
+}
+
+.separator span {
+  color: white;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+}
+.card {
+  background: #0C5491;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+.card h2 {
+  text-align: center;
+  color: white;
+}
+
+.card h4 {
+    color: #B3B3B3;
+}
+.card input, .card select, .card button {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid white;
+  font-size: 1em;
+  background-color: #0C5491;
+  color: white;
+}
+
+.card button {
+  background: #004681;
+  color: #B3B3B3;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 230px;
+  display: block;      /* necessário para margin auto funcionar */
+  margin: 20px auto 0 auto;      /* centraliza horizontalmente */
+}
+
+.erro {
+  color: #ee5397;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+@media (max-width: 500px) {
+  .card {
+    padding: 15px;
+  }
+  .card h2 {
+    font-size: 1.2em;
+  }
+}
