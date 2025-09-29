@@ -42,10 +42,10 @@ body{
 .legend{list-style:none;padding:0;margin:14px 0 0 0}
 .legend li{display:flex;align-items:center;gap:10px;margin:6px 0}
 .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
-.dot.up{background:#7CFC00}
-.dot.down{background:#FF4D6D}
-.accent{color:#7CFC00}
-.muted{color:#FF4D6D}
+.dot.up{background:#ff79b0}
+.dot.down{background:#ffeb3b}
+.accent{color:#ff79b0}
+.muted{color:#ffeb3b}
 
 .footer{
   padding:16px 24px;
@@ -63,4 +63,15 @@ body{
   .donut{grid-area:donut}
   .bar{grid-area:bar}
   .line{grid-area:line}
+  /* legibilidade dos gráficos */
+.card h2, .card h3 { font-size: 20px; }
+.donut .donut-wrap { max-width: 380px; margin-inline: auto; }
+canvas { display:block; margin:0 auto; }
+.legend { font-size: 14px; }
+
+.legend { gap: 8px; }
+.legend li { display:flex; align-items:center; gap:10px; margin:6px 0; }
+.legend-totals { color:#E5E7EB; opacity:.9; margin-top:6px; }
+.legend strong { font-weight:800; }
+
 }
