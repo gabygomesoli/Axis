@@ -127,7 +127,7 @@ async function loadData(){
   const lessonsSeries = toSeries(data.lessons_week,'lessons');
   const postsSeries   = toSeries(data.posts_week,'posts');
 
-  /* ========== DONUT: diferença de questões e % a mais ========== */
+  /* DONUT: diferença de questões e % a mais */
   const thisWeek = Number(data?.questions_week?.this_week || 0);
   const lastWeek = Number(data?.questions_week?.last_week  || 0);
 
@@ -140,7 +140,7 @@ async function loadData(){
   else percMore = thisWeek > 0 ? 100 : 0;
 
   const percMoreRounded = Math.round(percMore);
-  const fill = Math.max(0, Math.min(100, percMoreRounded)); // 0..100 p/ o anel
+  const fill = Math.max(0, Math.min(100, percMoreRounded));
 
   // Atualiza a legenda (+X e -Y) e, se existir, os totais na página
   const up    = Math.max(diff, 0);
@@ -157,7 +157,7 @@ async function loadData(){
   // ANEL DE PROGRESSO (representa a % a mais, 0..100)
   const ctxD = document.getElementById('donutChart').getContext('2d');
   const grad = ctxD.createLinearGradient(0,0,0,300);
-  grad.addColorStop(0,'#ffeb3b'); // você pode trocar para rosa, se preferir
+  grad.addColorStop(0,'#ffeb3b');
   grad.addColorStop(1,'#ffeb3b');
 
   new Chart(ctxD,{
@@ -177,21 +177,21 @@ async function loadData(){
   const signDiff = diff>0?'+':diff<0?'−':'';
   const signPer  = percMoreRounded>0?'+':percMoreRounded<0?'−':'';
   d.options.plugins.centerText = {
-    main: `${signDiff}${Math.abs(diff)}`,                         // ex.: +25
-    sub:  `${signPer}${Math.abs(percMoreRounded)}% vs sem. passada`, // ex.: +42%
-    sub2: `${fmtNumber(thisWeek)} vs ${fmtNumber(lastWeek)} resp.`    // ex.: 85 vs 60
+    main: `${signDiff}${Math.abs(diff)}`,
+    sub:  `${signPer}${Math.abs(percMoreRounded)}% vs sem. passada`,
+    sub2: `${fmtNumber(thisWeek)} vs ${fmtNumber(lastWeek)} resp.` 
   };
   d.update();
 
-  /* ========== BARRAS ========== */
+  /* BARRAS*/
   const ctxB = document.getElementById('barChart').getContext('2d');
   new Chart(ctxB,{
     type:'bar',
     data:{
-      labels: weekdayLabels.slice(0,6),
+      labels: weekdayLabels.slice(0,7),
       datasets:[{
         label:'Aulas',
-        data: lessonsSeries.slice(0,6),
+        data: lessonsSeries.slice(0,7),
         backgroundColor:'#FF79B0',
         borderRadius:10, maxBarThickness:36
       }]
@@ -209,7 +209,7 @@ async function loadData(){
     plugins:[ValueLabels]
   });
 
-  /* ========== LINHA COM ÁREA ========== */
+  /* LINHA COM ÁREA */
   const ctxL = document.getElementById('lineChart').getContext('2d');
   const g = ctxL.createLinearGradient(0,0,0,220);
   g.addColorStop(0,'rgba(139,92,246,0.45)');
@@ -218,10 +218,10 @@ async function loadData(){
   new Chart(ctxL,{
     type:'line',
     data:{
-      labels: weekdayLabels.slice(0,6),
+      labels: weekdayLabels.slice(0,7),
       datasets:[{
         label:'Posts',
-        data: postsSeries.slice(0,6),
+        data: postsSeries.slice(0,7),
         tension:.45, fill:true,
         backgroundColor:g, borderColor:'#8B5CF6',
         borderWidth:3, pointRadius:4, pointHoverRadius:6,

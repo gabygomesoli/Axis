@@ -15,14 +15,14 @@ cur = conn.cursor()
 today = dt.date.today()
 # Calcula a segunda-feira da semana atual
 monday = today - dt.timedelta(days=today.weekday()) 
-# Define essa segunda-feira como data de referência (created_at)
+# Define essa segunda-feira como data de referência
 created_at = monday
 
 # Remove registros antigos da mesma semana em todas as tabelas
 for t in ('lessons_week','posts_week','questions_week'):
     cur.execute(f"DELETE FROM {t} WHERE created_at=%s", (created_at,))
 
-# Valores fixos de lições e posts da semana (segunda a domingo)
+# Valores fixos de lições e posts da semana
 lessons = [4,3,1,3,7,4,0]
 posts   = [5,2,1,4,12,10,2]
 
