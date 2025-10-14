@@ -3,6 +3,7 @@ header('Content-Type: application/json');
 require_once __DIR__ . '/../config/db.php';
 
 $data = require_json();
+
 $name = trim($data['name'] ?? '');
 $username = trim($data['username'] ?? '');
 $password = $data['password'] ?? '';
@@ -14,15 +15,23 @@ if ($name === '' || $username === '' || $password === '') {
 }
 
 try {
-    $stmt = $pdo->prepare('INSERT INTO users (name, username, password_hash) VALUES (?, ?, ?)');
-    $stmt->execute([$name, $username, password_hash($password, PASSWORD_DEFAULT)]);
-    echo json_encode(['ok' => true]);
+    $stmt = $pdo->prepare('
+        INSERT INTO users (name, username, password_hash)
+        VALUES (?, ?, ?)
+    ');
+    $stmt->execute([
+        $name,
+        $username,
+        password_hash($password, PASSWORD_DEFAULT)
+    ]);
+
+    echo json_encode(['ok' => true, 'message' => 'Usuário registrado com sucesso!']);
 } catch (PDOException $e) {
     if ($e->getCode() == 23000) {
         http_response_code(409);
         echo json_encode(['error' => 'Usuário já existe.']);
     } else {
         http_response_code(500);
-        echo json_encode(['error' => 'Erro ao registrar.']);
+        echo json_encode(['error' => 'Erro ao registrar: ' . $e->getMessage()]);
     }
 }

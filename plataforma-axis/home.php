@@ -1,24 +1,22 @@
 <?php
-session_start();
-if (!isset($_SESSION['usuario'])) {
+require_once "db.php";
+
+
+if (!isset($_SESSION['usuario_id'])) {
     header("Location: index.php");
     exit;
 }
+
+$stmt = $pdo->prepare("SELECT username, foto_perfil FROM users WHERE id = ?");
+$stmt->execute([$_SESSION['usuario_id']]);
+$usuario = $stmt->fetch();
+
+if (!$usuario) {
+    header("Location: logout.php");
+    exit;
+}
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Home</title>
-  <link rel="icon" type="image/png" href="img/logo.png">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
-  <div class="card">
-    <h2>Bem-vindo, <?php echo $_SESSION['usuario']; ?>!</h2>
-    <a href="logout.php">Sair</a>
-  </div>
-</div>
-</body>
-</html>
+<h2>Bem-vindo, <?php echo htmlspecialchars($usuario['username']); ?>!</h2>
+<img src="<?php echo $usuario['foto_perfil'] ?: 'https://via.placeholder.com/120?text=Foto'; ?>" 
+     style="width:120px;height:120px;border-radius:50%;">
+<a href="logout.php">Sair</a>

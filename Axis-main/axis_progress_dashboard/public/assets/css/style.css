@@ -1,0 +1,77 @@
+:root{
+  --bg:#0b3a66;         
+  --card:#10497f;       
+  --text:#e6f2ff;
+  --muted:#9cc3ff;
+  --accent:#ff79b0;      
+  --ring:#ffeb3b;     
+  --radius:18px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg); color:var(--text);
+}
+.app-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 28px;
+}
+.brand{display:flex; align-items:center; gap:14px}
+.brand h1{margin:0; font-weight:800; background:#0d477a; padding:10px 18px; border-radius:28px;}
+.brand .globe{width:40px;height:40px;display:grid;place-items:center;background:#0d477a;border-radius:50%}
+.nav{display:flex;align-items:center;gap:18px}
+.nav-link{color:var(--text);text-decoration:none;opacity:.9;padding:8px 12px;border-radius:16px;background:#0d477a}
+.hamburger{background:#0d477a;border:none;color:var(--text);font-size:22px;border-radius:50%;width:40px;height:40px;cursor:pointer}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap:24px;
+  padding:20px;
+}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  border:1px solid rgba(255,255,255,.08);
+}
+.about{min-height:260px}
+.donut .donut-wrap{display:grid;place-items:center;margin-top:10px}
+.legend{list-style:none;padding:0;margin:14px 0 0 0}
+.legend li{display:flex;align-items:center;gap:10px;margin:6px 0}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot.up{background:#ff79b0}
+.dot.down{background:#ffeb3b}
+.accent{color:#ff79b0}
+.muted{color:#ffeb3b}
+
+.footer{
+  padding:16px 24px;
+  color:var(--muted);
+}
+
+@media (min-width: 1100px){
+  .grid{
+    grid-template-columns: 1.2fr 1.8fr;
+    grid-template-areas:
+      "about donut"
+      "bar line";
+  }
+  .about{grid-area:about}
+  .donut{grid-area:donut}
+  .bar{grid-area:bar}
+  .line{grid-area:line}
+  /* legibilidade dos gráficos */
+.card h2, .card h3 { font-size: 20px; }
+.donut .donut-wrap { max-width: 380px; margin-inline: auto; }
+canvas { display:block; margin:0 auto; }
+.legend { font-size: 14px; }
+
+.legend { gap: 8px; }
+.legend li { display:flex; align-items:center; gap:10px; margin:6px 0; }
+.legend-totals { color:#E5E7EB; opacity:.9; margin-top:6px; }
+.legend strong { font-weight:800; }
+
+}

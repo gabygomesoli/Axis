@@ -2,7 +2,7 @@
 // config/db.php
 // Ajuste as variáveis abaixo conforme seu ambiente MySQL
 $DB_HOST = getenv('DB_HOST') ?: 'localhost';
-$DB_NAME = getenv('DB_NAME') ?: 'forum_db';
+$DB_NAME = getenv('DB_NAME') ?: 'AXISBD';
 $DB_USER = getenv('DB_USER') ?: 'root';
 $DB_PASS = getenv('DB_PASS') ?: 'root';
 

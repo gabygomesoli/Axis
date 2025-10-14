@@ -1,6 +1,6 @@
 <?php
     $DB_HOST = getenv('DB_HOST') ?: 'localhost';
-    $DB_NAME = getenv('DB_NAME') ?: 'forum_redacoes';
+    $DB_NAME = getenv('DB_NAME') ?: 'AXISBD';
     $DB_USER = getenv('DB_USER') ?: 'root';
     $DB_PASS = getenv('DB_PASS') ?: 'root';
     try {
