@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AXIS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo-section">
+      <div class="logo">
+        <img src="../img/imgnavbar/globoaxis.png" alt="Axis" />
+      </div>
+      <a href="#" class="page-title">
+        Cronogramas
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <div class="navopcoes">
+        <a href="../home/home.php">Início</a>
+        <a href="../materias/materias.php">Matérias</a>
+        <a href="../comunidade/public/">Comunidade</a>
+        <a href="../perfil/index.php">Perfil</a>
+      </div>
+    </div>
+
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../home/home.php">Início</a>
+    <a href="../materias/materias.php">Matérias</a>
+    <a href="../comunidade/public/">Comunidade</a>
+    <a href="../perfil/index.php">Perfil</a>
+
+    <div class="menu-divider"></div>
+
+    <a href="../ranking/">Ranking</a>
+    <a href="../dashboard/public/">Estatísticas</a>
+    <a href="../redacao/public/">Redação</a>
+    <a href="../corretor/">Corretor por IA</a>
+    <a href="../simulado/">Simulados</a>
+    <a href="../cronograma/" class="active">Cronogramas</a>
+
+    <a href="../autenticar/logout.php" class="logout-link">Sair</a>
+  </div>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <header class="study-plan-header">
+    <div class="study-plan-title">
+      <h2>Plano de Estudos</h2>
+      <p id="week-display" class="week-display-hidden">1ª Semana</p>
+    </div>
+    <div class="study-plan-progress">
+      <div class="progress-chart-container">
+        <canvas id="progressChart" width="120" height="120"></canvas>
+        <div class="progress-text">
+          <span id="progress-percentage">0%</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main class="axis-main">
+    <section class="study-plan-card">
+      <div class="card-header">
+        <div id="week-title" class="week-title">1ª Semana</div>
+        <div class="week-navigation">
+          <button id="prev-week" class="week-nav-btn">
+            <img src="img_axis/esquerda.png" alt="Semana anterior">
+          </button>
+          <button id="next-week" class="week-nav-btn">
+            <img src="img_axis/direita.png" alt="Próxima semana">
+          </button>
+        </div>
+      </div>
+      
+      <div class="game-map">
+        <div class="zigzag-path-container">
+          <div class="svg-container">
+            <svg width="952" height="975" viewBox="0 0 952 975" fill="none" xmlns="http://www.w3.org/2000/svg" class="game-svg-path">
+              <path d="M862 726.504H88.8334C-26.6622 726.504 -21.868 970.589 88.8334 970.589H862M86.3945 485.782H862.031C977.896 485.782 973.086 726.672 862.031 726.672H86.3945M81.1511 4H856.788C972.653 4.00002 967.843 244.891 856.788 244.891H81.1511M871.984 244.891H98.7098C-16.8018 244.891 -12.007 485.782 98.7098 485.782H871.984" stroke="url(#paint0_linear_619_17)" stroke-width="8"/>
+              <defs>
+                <linearGradient id="paint0_linear_619_17" x1="480.5" y1="4" x2="480.5" y2="726.672" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#65BEE9"/>
+                  <stop offset="0.360577" stop-color="#F9E900"/>
+                  <stop offset="0.721153" stop-color="#EE5397"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="subjects-container">
+            <div class="day-marker day-1">1° Dia</div>
+            <div class="day-marker day-2">2° Dia</div>
+            <div class="day-marker day-3">3° Dia</div>
+            <div class="day-marker day-4">4° Dia</div>
+            <div class="day-marker day-5">5° Dia</div>
+
+            <div class="subject subject-1 current">
+              <img src="matérias/abra-o-livro.png" alt="Matéria 1">
+              <div class="subject-description">
+                Interpretação de textos: compreender ideias explícitas e implícitas.
+              </div>
+            </div>
+            <div class="subject subject-2 locked">
+              <img src="matérias/matematica.png" alt="Matéria 2">
+              <div class="subject-description">
+                Matemática básica: operações fundamentais.
+              </div>
+            </div>
+            <div class="subject subject-3 locked">
+              <img src="matérias/molecula.png" alt="Matéria 3" style="width:90px;height:89px;">
+              <div class="subject-description">
+                Química: estrutura atômica e molecular.
+              </div>
+            </div>
+            
+            <div class="subject subject-4 locked">
+              <img src="matérias/dna.png" alt="Matéria 4">
+              <div class="subject-description">
+                Biologia: genética e DNA.
+              </div>
+            </div>
+            <div class="subject subject-5 locked">
+              <img src="matérias/filosofia.png" alt="Matéria 5">
+              <div class="subject-description">
+                Filosofia: pensamento crítico e lógica.
+              </div>
+            </div>
+            <div class="subject subject-6 locked">
+              <img src="matérias/math.png" alt="Matéria 6">
+              <div class="subject-description">
+                Matemática avançada: álgebra e cálculo.
+              </div>
+            </div>
+            
+            <div class="subject subject-7 locked">
+              <img src="matérias/literatura.png" alt="Matéria 7" style="width:92px;height:92px;">
+              <div class="subject-description">
+                Literatura: análise de obras clássicas.
+              </div>
+            </div>
+            <div class="subject subject-8 locked">
+              <img src="matérias/redacao.png" alt="Matéria 8">
+              <div class="subject-description">
+                Redação: técnicas de escrita e argumentação.
+              </div>
+            </div>
+            <div class="subject subject-9 locked">
+              <img src="matérias/microscopio.png" alt="Matéria 9" style="width:90px;height:90px;">
+              <div class="subject-description">
+                Biologia: microbiologia e células.
+              </div>
+            </div>
+            
+            <div class="subject subject-10 locked">
+              <img src="matérias/globo.png" alt="Matéria 10">
+              <div class="subject-description">
+                Geografia: geopolítica mundial.
+              </div>
+            </div>
+            <div class="subject subject-11 locked">
+              <img src="matérias/abra-o-livro.png" alt="Matéria 11">
+              <div class="subject-description">
+                Literatura: autores contemporâneos.
+              </div>
+            </div>
+            <div class="subject subject-12 locked">
+              <img src="matérias/matematica.png" alt="Matéria 12">
+              <div class="subject-description">
+                Matemática: geometria e trigonometria.
+              </div>
+            </div>
+            
+            <div class="subject subject-13 locked">
+              <img src="matérias/atom.png" alt="Matéria 13" style="width:90px;height:90px;">
+              <div class="subject-description">
+                Física: estrutura atômica e nuclear.
+              </div>
+            </div>
+            <div class="subject subject-14 locked">
+              <img src="matérias/molecula.png" alt="Matéria 14" style="width:90px;height:90px;">
+              <div class="subject-description">
+                Química: reações químicas e equilíbrio.
+              </div>
+            </div>
+            <div class="subject subject-15 locked">
+              <img src="matérias/redacao.png" alt="Matéria 15">
+              <div class="subject-description">
+                Redação: dissertação e técnicas de conclusão.
+              </div>
+            </div>
+            
+            <div id="star-reward" class="star-reward locked">
+              <img src="matérias/star2.png" alt="Estrela de Conquista" class="star-image">
+              <div class="star-description">
+                Conclua todas as matérias da semana para desbloquear esta conquista!
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="status" class="status">Matéria Atual: 1 | Concluídas: 0 | Restantes: 14</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="achievement-modal" class="achievement-modal">
+    <div class="modal-content">
+      <div class="modal-star">
+        <img src="matérias/star.png" alt="Estrela Brilhante">
+      </div>
+      <h2>Parabéns!</h2>
+      <p>Você completou todas as matérias desta semana!</p>
+      <button id="close-modal" class="modal-close-btn">Continuar</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navbarToggle = document.getElementById('navbarToggle');
+      const mobileMenu   = document.getElementById('mobileMenu');
+      const menuOverlay  = document.getElementById('menuOverlay');
+      const navbar       = document.querySelector('.navbar');
+
+      if (!navbarToggle || !mobileMenu || !menuOverlay) return;
+
+      const openMenu = () => {
+        navbarToggle.classList.add('active');
+        mobileMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        navbarToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeMenu = () => {
+        navbarToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        navbarToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      };
+
+      navbarToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.contains('active');
+        if (isOpen) closeMenu();
+        else openMenu();
+      });
+
+      menuOverlay.addEventListener('click', closeMenu);
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener('scroll', () => {
+        if (!navbar) return;
+        if (window.scrollY > 10) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
