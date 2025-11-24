@@ -1,1 +1,0 @@
-# AXIS – Página de Ranking e insigmas
