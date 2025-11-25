@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+:root {
+  --bg-start: #00285f;
+  --bg-mid: #004b8f;
+  --accent: #ee5397;
+  --card-bg: rgba(0, 75, 143, 0.7);
+  --white-10: rgba(255, 255, 255, 0.1);
+  --white-25: rgba(255, 255, 255, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url("../img/background.png") center / cover no-repeat;
+  padding: 40px 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+
+.card {
+  width: min(800px, 96%);
+  border-radius: 28px;
+  background: var(--card-bg);
+  display: flex;
+  gap: 24px;
+  padding: 45px;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  margin: auto;
+}
+
+.card .content {
+  flex: 0.75;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #fff;
+}
+
+.card .content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 30px 0;
+}
+
+.card .content h4 {
+  margin: 6px 0 30px 0;
+  font-weight: 400;
+  font-size: 20px;
+  color: #b3b3b3;
+}
+
+.selecao {
+  background-color: var(--card-bg);
+  color: #90bace;
+}
+
+form .field {
+  width: 100%;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.2px solid var(--white-25);
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 15px;
+  outline: none;
+  transition: border-color 0.18s, transform 0.08s;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus,
+select:focus {
+  border: 2px solid var(--accent);
+  transform: translateY(-3px);
+}
+
+input.error,
+select.error {
+  border: 2px solid var(--accent);
+  background: rgba(238, 83, 151, 0.1);
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: #90bace;
+}
+
+.erro {
+  color: #ee5397;
+  font-size: 0.85rem;
+  margin: 0 0 12px 0;
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+.erro-geral {
+  background: rgba(238, 83, 151, 0.2);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.termos-label {
+  color: #cfcfcf;
+  font-size: 0.95rem;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.termos-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.2px solid var(--white-25);
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="file"].error {
+  border: 2px solid var(--accent);
+  background: rgba(238, 83, 151, 0.1);
+}
+
+.termos-label.error {
+  color: #ee5397;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 17px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: #004681;
+  color: #90bace;
+}
+
+.btn.primary:hover {
+  background: #ee5397;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.btn.pink {
+  background: var(--accent);
+  color: #fff;
+  margin-top: 20px;
+}
+
+.btn.pink:hover {
+  background: #ff7ab8;
+  transform: translateY(-3px);
+}
+
+.imagens {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mascote img {
+  width: 300px;
+}
+
+.logomenor img {
+  width: 100px;
+}
+
+@media (max-width: 920px) {
+  body {
+    padding: 20px 15px;
+  }
+  
+  .card {
+    flex-direction: column-reverse;
+    padding: 30px 20px;
+    margin: 20px auto;
+  }
+  
+  .card .mascote {
+    margin-bottom: 6px;
+  }
+  
+  .buttons .btn {
+    width: 100%;
+    max-width: 380px;
+  }
+  
+  .card .mascote img {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px 10px;
+  }
+  
+  .card {
+    padding: 25px 15px;
+  }
+  
+  .erro {
+    font-size: 0.8rem;
+  }
+}
